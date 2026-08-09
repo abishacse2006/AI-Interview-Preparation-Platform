@@ -139,18 +139,33 @@ let timer = setInterval(function(){
 
 }, 1000);
 
-let questions=[
+let questions = [
 "Tell me about yourself",
 "What are your strengths?",
-"Explain your project",
-"Why should we hire you?"
+"What are your weaknesses?",
+"Why should we hire you?",
+"Why do you want to join our company?",
+"Explain your project.",
+"What technologies did you use in your project?",
+"What was the biggest challenge you faced in your project?",
+"What is HTML?",
+"What is CSS?",
+"What is JavaScript?",
+"What is the difference between frontend and backend?",
+"What is a database?",
+"What is SQL?",
+"What is DBMS?",
+"What is Artificial Intelligence?",
+"What is Machine Learning?",
+"Which programming language do you know?",
+"Where do you see yourself in five years?",
+"Do you have any questions for us?"
 ];
 
-let index=0;
-let totalScore=0;
+let index = 0;
+let totalScore = 0;
 
-document.getElementById("question").innerHTML=questions[index];
-
+document.getElementById("question").innerHTML = questions[index];
 
 function submitAnswer(){
 
@@ -198,34 +213,47 @@ function nextQuestion(){
         document.getElementById("progress").innerHTML =
         "Question " + (index + 1) + " of " + questions.length;
 
-        document.getElementById("answer").value = "";
+ document.getElementById("feedback").innerHTML = "";
+       document.getElementById("answer").value = "";
 
-        document.getElementById("feedback").innerHTML = "";
-
+        
     }
     else{
 
         let performance;
 
-        if(totalScore >= 28){
-            performance = "Excellent ⭐";
-        }
-        else if(totalScore >= 20){
-            performance = "Good 👍";
-        }
-        else{
-            performance = "Needs Improvement 💪";
-        }
+        if(totalScore >= 17){
+performance = "Excellent ⭐";
+}
+else if(totalScore >= 12){
+performance = "Good 👍";
+}
+else{
+performance = "Needs Improvement 💪";
+}
 
         document.getElementById("question").innerHTML =
         "Interview Completed! 🎉";
         document.getElementById("finalScore").innerHTML =
-"Total Score: " + totalScore + "/32";
+"Total Score: " + totalScore + "/20";
 
 document.getElementById("performance").innerHTML =
 "Performance: " + performance;
 
-        document.getElementById("feedback").innerHTML ="";
+        let finalFeedback;
+
+if(totalScore >= 17){
+finalFeedback = "Excellent performance! ⭐ You are well prepared for the interview. Keep up the great work!";
+}
+else if(totalScore >= 12){
+finalFeedback = "Good job! 👍 You have a good foundation. Practice more technical and HR questions to improve further.";
+}
+else{
+finalFeedback = "Keep practicing! 💪 Focus on improving your technical knowledge, communication, and confidence.";
+}
+
+document.getElementById("feedback").innerHTML =
+finalFeedback;
     }
 function restartInterview() {
     location.reload();
